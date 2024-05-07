@@ -1,0 +1,37 @@
+git+https://github.com/huggingface/accelerate
+git+https://github.com/huggingface/peft
+git+https://github.com/huggingface/trl
+git+https://github.com/huggingface/datatrove.git
+unsloth[conda]@git+https://github.com/unslothai/unsloth.git
+deepspeed==0.14.0
+PyGithub
+# flash-attn==2.5.7 单独安装
+# 第一 确保 linux "外界"的 cuda版本 与 conda 虚拟环境中cuda版本一致
+# 第二 安装好 c++ g++ ninja (c++ g++ Ninjia 安装版本过低后续安装可能会失败)
+# 第三 参考官方命令:
+huggingface-hub
+evaluate
+datasets
+bitsandbytes
+einops
+wandb
+tensorboard
+tiktoken
+pandas
+numpy
+scipy
+matplotlib
+sentencepiece
+nltk
+xformers
+hf_transfer
+
+transformers==4.40.1
+loguru
+tqdm
+transformers_stream_generator
+torch==2.2.1
+openpyxl
+httpx
+joblib
+scikit_learn

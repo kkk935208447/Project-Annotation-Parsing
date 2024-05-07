@@ -1,0 +1,2 @@
+# 需要单独安装
+conda install mpi4py==3.1.4

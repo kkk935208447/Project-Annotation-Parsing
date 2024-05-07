@@ -1,0 +1,42 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python lora 微调",         // 可自定义
+            "type": "debugpy",
+            "request": "launch",
+            "program": "finetune_demo/finetune_hf.py",  // 使用.py 脚本路径(相对路径)、which torchrun、which deepspeed等命令查看位置
+            "console": "integratedTerminal",
+            "justMyCode": false,       // 调试允许进入他人的代码
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode家路径为项目根路径, 搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [               // 参数，每个参数的参数值无论是否是数字都需用引号
+                "/workspace/AdvertiseGen_fix",  
+                "/workspace/chatglm3-6b",
+                "finetune_demo/configs/lora.yaml"
+            ]
+        },
+        {
+            "name": "Python lora_ds 微调",         // 可自定义
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/opt/conda/envs/llm/bin/torchrun",  // 使用.py 脚本路径(相对路径)、which torchrun、which deepspeed等命令查看位置
+            "console": "integratedTerminal",
+            "justMyCode": false,       // 调试允许进入他人的代码
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode家路径为项目根路径, 搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [
+                "--nproc_per_node","1",
+                "finetune_demo/finetune_hf.py",
+                "/workspace/AdvertiseGen_fix",  
+                "/workspace/chatglm3-6b",
+                "finetune_demo/configs/lora.yaml"
+            ]
+        }
+    ]
+}

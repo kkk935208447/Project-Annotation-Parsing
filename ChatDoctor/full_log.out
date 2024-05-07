@@ -1,0 +1,651 @@
+[2024-04-10 09:35:17,409] torch.distributed.run: [WARNING] 
+[2024-04-10 09:35:17,409] torch.distributed.run: [WARNING] *****************************************
+[2024-04-10 09:35:17,409] torch.distributed.run: [WARNING] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+[2024-04-10 09:35:17,409] torch.distributed.run: [WARNING] *****************************************
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+/opt/conda/envs/llm/lib/python3.10/site-packages/transformers/training_args.py:1693: FutureWarning: using `--fsdp_transformer_layer_cls_to_wrap` is deprecated. Use fsdp_config instead 
+  warnings.warn(
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+/opt/conda/envs/llm/lib/python3.10/site-packages/transformers/training_args.py:1693: FutureWarning: using `--fsdp_transformer_layer_cls_to_wrap` is deprecated. Use fsdp_config instead 
+  warnings.warn(
+[INFO|configuration_utils.py:724] 2024-04-10 09:35:20,134 >> loading configuration file /workspace/Llama-2-7b-chat-hf/config.json
+[INFO|configuration_utils.py:789] 2024-04-10 09:35:20,135 >> Model config LlamaConfig {
+  "_name_or_path": "/workspace/Llama-2-7b-chat-hf",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 11008,
+  "max_position_embeddings": 4096,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 32,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 10000.0,
+  "tie_word_embeddings": false,
+  "torch_dtype": "float16",
+  "transformers_version": "4.39.3",
+  "use_cache": true,
+  "vocab_size": 32000
+}
+
+[INFO|modeling_utils.py:3280] 2024-04-10 09:35:20,160 >> loading weights file /workspace/Llama-2-7b-chat-hf/pytorch_model.bin.index.json
+[INFO|modeling_utils.py:1417] 2024-04-10 09:35:20,160 >> Instantiating LlamaForCausalLM model under default dtype torch.bfloat16.
+[INFO|configuration_utils.py:928] 2024-04-10 09:35:20,161 >> Generate config GenerationConfig {
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "use_cache": false
+}
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.79s/it]Loading checkpoint shards:  50%|█████     | 1/2 [00:32<00:32, 32.85s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:46<00:00, 21.55s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:46<00:00, 23.24s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:46<00:00, 21.61s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:46<00:00, 23.28s/it]
+[INFO|modeling_utils.py:4024] 2024-04-10 09:36:06,871 >> All model checkpoint weights were used when initializing LlamaForCausalLM.
+
+[INFO|modeling_utils.py:4032] 2024-04-10 09:36:06,871 >> All the weights of LlamaForCausalLM were initialized from the model checkpoint at /workspace/Llama-2-7b-chat-hf.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use LlamaForCausalLM for predictions without further training.
+[INFO|configuration_utils.py:881] 2024-04-10 09:36:06,874 >> loading configuration file /workspace/Llama-2-7b-chat-hf/generation_config.json
+[INFO|configuration_utils.py:928] 2024-04-10 09:36:06,874 >> Generate config GenerationConfig {
+  "bos_token_id": 1,
+  "do_sample": true,
+  "eos_token_id": 2,
+  "max_length": 4096,
+  "pad_token_id": 0,
+  "temperature": 0.6,
+  "top_p": 0.9
+}
+
+[INFO|tokenization_utils_base.py:2082] 2024-04-10 09:36:06,876 >> loading file tokenizer.model
+[INFO|tokenization_utils_base.py:2082] 2024-04-10 09:36:06,876 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:2082] 2024-04-10 09:36:06,876 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:2082] 2024-04-10 09:36:06,876 >> loading file tokenizer_config.json
+[INFO|tokenization_utils_base.py:2082] 2024-04-10 09:36:06,876 >> loading file tokenizer.json
+[INFO|modeling_utils.py:1893] 2024-04-10 09:36:07,030 >> You are resizing the embedding layer without providing a `pad_to_multiple_of` parameter. This means that the new embedding dimension will be 32001. This might induce some performance reduction as *Tensor Cores* will not be available. For more details about this, or help on choosing the correct value for resizing, refer to this guide: https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html#requirements-tc
+04/10/2024 09:36:16 - WARNING - root - Loading data...
+04/10/2024 09:36:16 - WARNING - root - Formatting inputs...
+04/10/2024 09:36:16 - WARNING - root - Tokenizing inputs... This may take some time...
+04/10/2024 09:36:16 - INFO - __main__ - Model LlamaForCausalLM(
+  (model): LlamaModel(
+    (embed_tokens): Embedding(32001, 4096)
+    (layers): ModuleList(
+      (0-31): 32 x LlamaDecoderLayer(
+        (self_attn): LlamaSdpaAttention(
+          (q_proj): Linear(in_features=4096, out_features=4096, bias=False)
+          (k_proj): Linear(in_features=4096, out_features=4096, bias=False)
+          (v_proj): Linear(in_features=4096, out_features=4096, bias=False)
+          (o_proj): Linear(in_features=4096, out_features=4096, bias=False)
+          (rotary_emb): LlamaRotaryEmbedding()
+        )
+        (mlp): LlamaMLP(
+          (gate_proj): Linear(in_features=4096, out_features=11008, bias=False)
+          (up_proj): Linear(in_features=4096, out_features=11008, bias=False)
+          (down_proj): Linear(in_features=11008, out_features=4096, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LlamaRMSNorm()
+        (post_attention_layernorm): LlamaRMSNorm()
+      )
+    )
+    (norm): LlamaRMSNorm()
+  )
+  (lm_head): Linear(in_features=4096, out_features=32001, bias=False)
+)
+04/10/2024 09:36:16 - INFO - __main__ - Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True},
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=True,
+bf16_full_eval=False,
+cache_dir=None,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+dataloader_prefetch_factor=None,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=False,
+do_predict=False,
+do_train=False,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[<FSDPOption.FULL_SHARD: 'full_shard'>, <FSDPOption.OFFLOAD: 'offload'>, <FSDPOption.AUTO_WRAP: 'auto_wrap'>],
+fsdp_config={'min_num_params': 0, 'transformer_layer_cls_to_wrap': ['LlamaDecoderLayer'], 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=LlamaDecoderLayer,
+full_determinism=False,
+gradient_accumulation_steps=8,
+gradient_checkpointing=True,
+gradient_checkpointing_kwargs=None,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=2e-06,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=/workspace/output/runs/Apr10_09-35-19_b10748d6705e,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=10,
+logging_strategy=steps,
+lr_scheduler_kwargs={},
+lr_scheduler_type=cosine,
+max_grad_norm=0.5,
+max_steps=-1,
+metric_for_best_model=None,
+model_max_length=512,
+mp_parameters=,
+neftune_noise_alpha=None,
+no_cuda=False,
+num_train_epochs=1.0,
+optim=adamw_torch,
+optim_args=None,
+optim_target_modules=None,
+output_dir=/workspace/output,
+overwrite_output_dir=False,
+past_index=-1,
+per_device_eval_batch_size=1,
+per_device_train_batch_size=1,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=/workspace/output,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=50,
+save_strategy=steps,
+save_total_limit=1,
+seed=42,
+skip_memory_metrics=True,
+split_batches=None,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.03,
+warmup_steps=0,
+weight_decay=0.0,
+)
+04/10/2024 09:36:16 - INFO - __main__ - Model parameters LlamaConfig {
+  "_name_or_path": "/workspace/Llama-2-7b-chat-hf",
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 11008,
+  "max_position_embeddings": 4096,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 32,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": null,
+  "rope_theta": 10000.0,
+  "tie_word_embeddings": false,
+  "torch_dtype": "float16",
+  "transformers_version": "4.39.3",
+  "use_cache": false,
+  "vocab_size": 32001
+}
+
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.embed_tokens.weight - torch.bfloat16 - torch.Size([32001, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.0.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.0.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.0.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.0.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.0.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.0.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.0.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.0.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.0.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.1.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.1.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.1.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.1.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.1.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.1.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.1.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.1.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.1.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.2.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.2.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.2.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.2.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.2.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.2.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.2.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.2.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.2.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.3.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.3.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.3.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.3.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.3.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.3.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.3.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.3.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.3.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.4.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.4.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.4.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.4.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.4.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.4.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.4.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.4.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.4.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.5.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.5.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.5.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.5.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.5.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.5.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.5.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.5.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.5.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.6.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.6.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.6.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.6.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.6.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.6.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.6.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.6.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.6.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.7.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.7.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.7.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.7.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.7.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.7.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.7.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.7.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.7.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.8.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.8.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.8.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.8.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.8.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.8.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.8.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.8.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.8.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.9.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.9.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.9.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.9.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.9.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.9.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.9.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.9.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.9.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.10.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.10.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.10.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.10.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.10.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.10.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.10.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.10.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.10.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.11.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.11.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.11.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.11.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.11.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.11.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.11.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.11.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.11.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.12.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.12.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.12.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.12.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.12.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.12.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.12.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.12.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.12.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.13.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.13.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.13.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.13.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.13.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.13.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.13.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.13.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.13.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.14.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.14.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.14.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.14.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.14.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.14.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.14.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.14.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.14.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.15.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.15.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.15.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.15.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.15.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.15.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.15.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.15.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.15.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.16.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.16.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.16.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.16.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.16.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.16.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.16.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.16.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.16.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.17.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.17.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.17.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.17.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.17.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.17.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.17.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.17.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.17.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.18.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.18.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.18.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.18.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.18.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.18.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.18.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.18.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.18.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.19.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.19.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.19.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.19.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.19.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.19.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.19.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.19.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.19.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.20.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.20.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.20.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.20.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.20.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.20.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.20.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.20.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.20.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.21.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.21.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.21.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.21.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.21.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.21.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.21.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.21.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.21.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.22.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.22.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.22.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.22.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.22.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.22.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.22.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.22.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.22.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.23.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.23.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.23.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.23.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.23.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.23.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.23.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.23.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.23.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.24.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.24.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.24.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.24.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.24.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.24.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.24.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.24.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.24.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.25.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.25.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.25.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.25.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.25.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.25.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.25.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.25.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.25.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.26.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.26.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.26.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.26.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.26.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.26.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.26.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.26.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.26.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.27.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.27.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.27.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.27.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.27.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.27.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.27.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.27.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.27.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.28.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.28.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.28.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.28.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.28.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.28.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.28.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.28.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.28.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.29.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.29.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.29.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.29.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.29.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.29.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.29.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.29.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.29.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.30.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.30.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.30.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.30.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.30.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.30.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.30.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.30.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.30.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.31.self_attn.q_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.31.self_attn.k_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.31.self_attn.v_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.31.self_attn.o_proj.weight - torch.bfloat16 - torch.Size([4096, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.31.mlp.gate_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.31.mlp.up_proj.weight - torch.bfloat16 - torch.Size([11008, 4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.31.mlp.down_proj.weight - torch.bfloat16 - torch.Size([4096, 11008])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.31.input_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.layers.31.post_attention_layernorm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: model.norm.weight - torch.bfloat16 - torch.Size([4096])
+04/10/2024 09:36:16 - INFO - __main__ - trainable model arguments: lm_head.weight - torch.bfloat16 - torch.Size([32001, 4096])
+04/10/2024 09:36:16 - WARNING - root - Loading data...
+04/10/2024 09:36:16 - WARNING - root - Formatting inputs...
+04/10/2024 09:36:16 - WARNING - root - Tokenizing inputs... This may take some time...
+/opt/conda/envs/llm/lib/python3.10/site-packages/accelerate/accelerator.py:436: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches', 'even_batches', 'use_seedable_sampler']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
+dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False, even_batches=True, use_seedable_sampler=True)
+  warnings.warn(
+/opt/conda/envs/llm/lib/python3.10/site-packages/accelerate/accelerator.py:436: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches', 'even_batches', 'use_seedable_sampler']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
+dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False, even_batches=True, use_seedable_sampler=True)
+  warnings.warn(
+[INFO|trainer.py:607] 2024-04-10 09:36:25,373 >> Using auto half precision backend
+[INFO|trainer.py:1969] 2024-04-10 09:36:31,219 >> ***** Running training *****
+[INFO|trainer.py:1970] 2024-04-10 09:36:31,219 >>   Num examples = 5,452
+[INFO|trainer.py:1971] 2024-04-10 09:36:31,219 >>   Num Epochs = 1
+[INFO|trainer.py:1972] 2024-04-10 09:36:31,219 >>   Instantaneous batch size per device = 1
+[INFO|trainer.py:1975] 2024-04-10 09:36:31,219 >>   Total train batch size (w. parallel, distributed & accumulation) = 16
+[INFO|trainer.py:1976] 2024-04-10 09:36:31,219 >>   Gradient Accumulation steps = 8
+[INFO|trainer.py:1977] 2024-04-10 09:36:31,219 >>   Total optimization steps = 340
+[INFO|trainer.py:1978] 2024-04-10 09:36:31,220 >>   Number of trainable parameters = 3,369,211,904
+  0%|          | 0/340 [00:00<?, ?it/s]/opt/conda/envs/llm/lib/python3.10/site-packages/torch/utils/checkpoint.py:460: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/opt/conda/envs/llm/lib/python3.10/site-packages/torch/utils/checkpoint.py:460: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/workspace/ChatDoctor/train.py", line 307, in <module>
+Traceback (most recent call last):
+  File "/workspace/ChatDoctor/train.py", line 307, in <module>
+    train()
+  File "/workspace/ChatDoctor/train.py", line 301, in train
+    train()
+  File "/workspace/ChatDoctor/train.py", line 301, in train
+    trainer.train()
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/transformers/trainer.py", line 1780, in train
+    trainer.train()
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/transformers/trainer.py", line 1780, in train
+    return inner_training_loop(
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/transformers/trainer.py", line 2118, in _inner_training_loop
+    return inner_training_loop(
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/transformers/trainer.py", line 2118, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/transformers/trainer.py", line 3045, in training_step
+    tr_loss_step = self.training_step(model, inputs)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/transformers/trainer.py", line 3045, in training_step
+    self.accelerator.backward(loss)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/accelerate/accelerator.py", line 2013, in backward
+    self.accelerator.backward(loss)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/accelerate/accelerator.py", line 2013, in backward
+    loss.backward(**kwargs)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/_tensor.py", line 522, in backward
+    torch.autograd.backward(
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/autograd/__init__.py", line 266, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/autograd/function.py", line 289, in apply
+    loss.backward(**kwargs)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/_tensor.py", line 522, in backward
+    torch.autograd.backward(
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/autograd/__init__.py", line 266, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/autograd/function.py", line 289, in apply
+    return user_fn(self, *args)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 319, in backward
+    return user_fn(self, *args)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 319, in backward
+    torch.autograd.backward(outputs_with_grad, args_with_grad)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/autograd/__init__.py", line 266, in backward
+    torch.autograd.backward(outputs_with_grad, args_with_grad)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/autograd/__init__.py", line 266, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 388.00 MiB. GPU 0 has a total capacity of 11.76 GiB of which 361.31 MiB is free. Process 79419 has 11.37 GiB memory in use. Of the allocated memory 11.06 GiB is allocated by PyTorch, and 93.89 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 388.00 MiB. GPU 1 has a total capacity of 11.76 GiB of which 377.31 MiB is free. Process 79420 has 11.36 GiB memory in use. Of the allocated memory 11.06 GiB is allocated by PyTorch, and 78.24 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+  0%|          | 0/340 [00:15<?, ?it/s]
+[2024-04-10 09:36:52,508] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 6791) of binary: /opt/conda/envs/llm/bin/python
+Traceback (most recent call last):
+  File "/opt/conda/envs/llm/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 347, in wrapper
+    return f(*args, **kwargs)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/distributed/run.py", line 812, in main
+    run(args)
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/distributed/run.py", line 803, in run
+    elastic_launch(
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 135, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/opt/conda/envs/llm/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 268, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2024-04-10_09:36:52
+  host      : b10748d6705e
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 6792)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-04-10_09:36:52
+  host      : b10748d6705e
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 6791)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

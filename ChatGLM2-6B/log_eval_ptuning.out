@@ -1,0 +1,888 @@
+04/05/2024 05:33:59 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: False
+04/05/2024 05:33:59 - INFO - __main__ - Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_backend=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=False,
+do_predict=True,
+do_train=False,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'fsdp_min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+generation_config=None,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=5e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=/workspace/output/adgen-chatglm2-6b-pt-128-1e-3/runs/Apr05_05-33-59_a37aa06d0ccd,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=500,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_hf,
+optim_args=None,
+output_dir=/workspace/output/adgen-chatglm2-6b-pt-128-1e-3,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=1,
+per_device_train_batch_size=8,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=/workspace/output/adgen-chatglm2-6b-pt-128-1e-3,
+save_on_each_node=False,
+save_safetensors=False,
+save_steps=500,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+/opt/conda/envs/llm/lib/python3.10/site-packages/datasets/load.py:2516: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=<use_auth_token>' instead.
+  warnings.warn(
+Generating validation split: 0 examples [00:00, ? examples/s]Generating validation split: 1070 examples [00:00, 124806.18 examples/s]
+Generating test split: 0 examples [00:00, ? examples/s]Generating test split: 1070 examples [00:00, 195995.51 examples/s]
+[INFO|configuration_utils.py:667] 2024-04-05 05:33:59,459 >> loading configuration file /workspace/chatglm2-6b/config.json
+[INFO|configuration_utils.py:667] 2024-04-05 05:33:59,463 >> loading configuration file /workspace/chatglm2-6b/config.json
+[INFO|configuration_utils.py:725] 2024-04-05 05:33:59,464 >> Model config ChatGLMConfig {
+  "_name_or_path": "/workspace/chatglm2-6b",
+  "add_bias_linear": false,
+  "add_qkv_bias": true,
+  "apply_query_key_layer_scaling": true,
+  "apply_residual_connection_post_layernorm": false,
+  "architectures": [
+    "ChatGLMModel"
+  ],
+  "attention_dropout": 0.0,
+  "attention_softmax_in_fp32": true,
+  "auto_map": {
+    "AutoConfig": "configuration_chatglm.ChatGLMConfig",
+    "AutoModel": "modeling_chatglm.ChatGLMForConditionalGeneration",
+    "AutoModelForCausalLM": "modeling_chatglm.ChatGLMForConditionalGeneration",
+    "AutoModelForSeq2SeqLM": "modeling_chatglm.ChatGLMForConditionalGeneration",
+    "AutoModelForSequenceClassification": "modeling_chatglm.ChatGLMForSequenceClassification"
+  },
+  "bias_dropout_fusion": true,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "ffn_hidden_size": 13696,
+  "fp32_residual_connection": false,
+  "hidden_dropout": 0.0,
+  "hidden_size": 4096,
+  "kv_channels": 128,
+  "layernorm_epsilon": 1e-05,
+  "model_type": "chatglm",
+  "multi_query_attention": true,
+  "multi_query_group_num": 2,
+  "num_attention_heads": 32,
+  "num_layers": 28,
+  "original_rope": true,
+  "pad_token_id": 0,
+  "padded_vocab_size": 65024,
+  "post_layer_norm": true,
+  "pre_seq_len": null,
+  "prefix_projection": false,
+  "quantization_bit": 0,
+  "rmsnorm": true,
+  "seq_length": 32768,
+  "tie_word_embeddings": false,
+  "torch_dtype": "float16",
+  "transformers_version": "4.30.2",
+  "use_cache": true,
+  "vocab_size": 65024
+}
+
+[INFO|tokenization_utils_base.py:1821] 2024-04-05 05:33:59,468 >> loading file tokenizer.model
+[INFO|tokenization_utils_base.py:1821] 2024-04-05 05:33:59,468 >> loading file added_tokens.json
+[INFO|tokenization_utils_base.py:1821] 2024-04-05 05:33:59,468 >> loading file special_tokens_map.json
+[INFO|tokenization_utils_base.py:1821] 2024-04-05 05:33:59,468 >> loading file tokenizer_config.json
+[INFO|modeling_utils.py:2575] 2024-04-05 05:33:59,611 >> loading weights file /workspace/chatglm2-6b/pytorch_model.bin.index.json
+[INFO|configuration_utils.py:577] 2024-04-05 05:33:59,612 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s]Loading checkpoint shards:  14%|█▍        | 1/7 [00:02<00:13,  2.28s/it]Loading checkpoint shards:  29%|██▊       | 2/7 [00:04<00:11,  2.25s/it]Loading checkpoint shards:  43%|████▎     | 3/7 [00:06<00:08,  2.25s/it]Loading checkpoint shards:  57%|█████▋    | 4/7 [00:08<00:06,  2.17s/it]Loading checkpoint shards:  71%|███████▏  | 5/7 [00:10<00:04,  2.16s/it]Loading checkpoint shards:  86%|████████▌ | 6/7 [00:13<00:02,  2.17s/it]Loading checkpoint shards: 100%|██████████| 7/7 [00:14<00:00,  1.88s/it]Loading checkpoint shards: 100%|██████████| 7/7 [00:14<00:00,  2.06s/it]
+[INFO|modeling_utils.py:3295] 2024-04-05 05:34:14,120 >> All model checkpoint weights were used when initializing ChatGLMForConditionalGeneration.
+
+[WARNING|modeling_utils.py:3297] 2024-04-05 05:34:14,120 >> Some weights of ChatGLMForConditionalGeneration were not initialized from the model checkpoint at /workspace/chatglm2-6b and are newly initialized: ['transformer.prefix_encoder.embedding.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[INFO|modeling_utils.py:2927] 2024-04-05 05:34:14,123 >> Generation config file not found, using a generation config created from the model config.
+04/05/2024 05:34:14 - INFO - __main__ - loading extra state dict of prefix encoder from /workspace/output/adgen-chatglm2-6b-pt-128-1e-3/checkpoint-1200
+04/05/2024 05:34:14 - INFO - __main__ - loaded extra state dict of prefix encoder from /workspace/output/adgen-chatglm2-6b-pt-128-1e-3/checkpoint-1200
+Quantized to 4 bit
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.embedding.word_embeddings.weight - torch.float16 - torch.Size([65024, 4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.0.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.1.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.2.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.3.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.4.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.5.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.6.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.7.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.8.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.9.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.10.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.11.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.12.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.13.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.14.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.15.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.16.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.17.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.18.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.19.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.20.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.21.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.22.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.23.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.24.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.25.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.26.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.input_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.self_attention.query_key_value.weight - torch.int8 - torch.Size([4608, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.self_attention.query_key_value.weight_scale - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.self_attention.query_key_value.bias - torch.float16 - torch.Size([4608])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.self_attention.dense.weight - torch.int8 - torch.Size([4096, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.self_attention.dense.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.post_attention_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.mlp.dense_h_to_4h.weight - torch.int8 - torch.Size([27392, 2048])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.mlp.dense_h_to_4h.weight_scale - torch.float16 - torch.Size([27392])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.mlp.dense_4h_to_h.weight - torch.int8 - torch.Size([4096, 6848])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.layers.27.mlp.dense_4h_to_h.weight_scale - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.encoder.final_layernorm.weight - torch.float16 - torch.Size([4096])
+04/05/2024 05:34:19 - INFO - __main__ - model not trainalbe args: transformer.output_layer.weight - torch.float16 - torch.Size([65024, 4096])
+04/05/2024 05:34:19 - INFO - __main__ - model trainable args: transformer.prefix_encoder.embedding.weight - torch.float32 - torch.Size([128, 14336])
+Running tokenizer on prediction dataset:   0%|          | 0/50 [00:00<?, ? examples/s]Running tokenizer on prediction dataset: 100%|██████████| 50/50 [00:00<00:00, 1359.05 examples/s]
+input_ids:
+ [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64790, 64792, 790, 30951, 517, 30910, 30939, 30996, 13, 13, 54761, 31211, 33467, 31010, 49534, 30998, 38317, 31010, 38683, 54901, 30998, 33692, 31010, 34198, 30998, 32799, 31010, 40512, 30998, 37505, 31010, 55845, 57435, 30998, 55500, 46025, 31010, 42373, 30998, 55500, 40877, 31010, 55251, 55995, 13, 13, 55437, 31211]
+inputs:
+ [Round 1]
+
+问：类型#上衣*材质#牛仔布*颜色#白色*风格#简约*图案#刺绣*衣样式#外套*衣款式#破洞
+
+答：
+label_ids:
+ [64790, 64792, 30910, 40512, 33311, 34746, 38683, 42373, 31123, 42087, 55500, 54715, 32177, 54999, 55583, 31155, 55500, 54715, 52161, 54536, 54725, 55659, 55251, 55995, 31735, 31123, 34596, 51584, 56212, 55200, 31123, 31917, 39903, 33561, 45032, 31155, 55500, 40786, 55379, 54807, 34311, 55200, 55845, 57435, 34394, 31123, 32115, 33612, 54706, 31123, 35765, 54835, 54741, 33481, 31155]
+labels:
+ 简约而不简单的牛仔外套，白色的衣身十分百搭。衣身多处有做旧破洞设计，打破单调乏味，增加一丝造型看点。衣身后背处有趣味刺绣装饰，丰富层次感，彰显别样时尚。
+04/05/2024 05:34:20 - INFO - __main__ - *** Predict ***
+[INFO|trainer.py:3200] 2024-04-05 05:34:20,194 >> ***** Running Prediction *****
+[INFO|trainer.py:3202] 2024-04-05 05:34:20,194 >>   Num examples = 50
+[INFO|trainer.py:3205] 2024-04-05 05:34:20,194 >>   Batch size = 1
+[INFO|configuration_utils.py:577] 2024-04-05 05:34:20,198 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+  0%|          | 0/50 [00:00<?, ?it/s][INFO|configuration_utils.py:577] 2024-04-05 05:34:27,398 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+  4%|▍         | 2/50 [00:03<01:29,  1.85s/it][INFO|configuration_utils.py:577] 2024-04-05 05:34:31,106 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+  6%|▌         | 3/50 [00:09<02:41,  3.43s/it][INFO|configuration_utils.py:577] 2024-04-05 05:34:36,734 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+  8%|▊         | 4/50 [00:14<03:14,  4.22s/it][INFO|configuration_utils.py:577] 2024-04-05 05:34:42,292 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 10%|█         | 5/50 [00:20<03:30,  4.67s/it][INFO|configuration_utils.py:577] 2024-04-05 05:34:47,796 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 12%|█▏        | 6/50 [00:25<03:37,  4.95s/it][INFO|configuration_utils.py:577] 2024-04-05 05:34:53,304 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 14%|█▍        | 7/50 [00:29<03:12,  4.49s/it][INFO|configuration_utils.py:577] 2024-04-05 05:34:56,823 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 16%|█▌        | 8/50 [00:33<03:09,  4.50s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:01,353 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 18%|█▊        | 9/50 [00:39<03:12,  4.70s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:06,490 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 20%|██        | 10/50 [00:45<03:23,  5.09s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:12,473 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 22%|██▏       | 11/50 [00:50<03:21,  5.16s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:17,789 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 24%|██▍       | 12/50 [00:54<02:58,  4.70s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:21,426 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 26%|██▌       | 13/50 [00:59<03:06,  5.04s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:27,268 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 28%|██▊       | 14/50 [01:04<02:59,  4.98s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:32,097 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 30%|███       | 15/50 [01:10<03:01,  5.18s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:37,751 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 32%|███▏      | 16/50 [01:16<03:03,  5.39s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:43,609 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 34%|███▍      | 17/50 [01:23<03:12,  5.84s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:50,496 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 36%|███▌      | 18/50 [01:28<03:04,  5.76s/it][INFO|configuration_utils.py:577] 2024-04-05 05:35:56,081 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 38%|███▊      | 19/50 [01:32<02:44,  5.29s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:00,277 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 40%|████      | 20/50 [01:36<02:22,  4.75s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:03,772 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 42%|████▏     | 21/50 [01:42<02:31,  5.24s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:10,142 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 44%|████▍     | 22/50 [01:50<02:47,  5.99s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:17,875 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 46%|████▌     | 23/50 [01:56<02:39,  5.91s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:23,610 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 48%|████▊     | 24/50 [02:01<02:27,  5.68s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:28,742 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 50%|█████     | 25/50 [02:06<02:16,  5.46s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:33,704 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 52%|█████▏    | 26/50 [02:12<02:16,  5.70s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:39,958 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 54%|█████▍    | 27/50 [02:19<02:18,  6.03s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:46,766 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 56%|█████▌    | 28/50 [02:24<02:09,  5.87s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:52,243 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 58%|█████▊    | 29/50 [02:29<01:58,  5.65s/it][INFO|configuration_utils.py:577] 2024-04-05 05:36:57,379 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 60%|██████    | 30/50 [02:35<01:53,  5.66s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:03,079 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 62%|██████▏   | 31/50 [02:39<01:35,  5.04s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:06,677 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 64%|██████▍   | 32/50 [02:45<01:39,  5.51s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:13,273 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 66%|██████▌   | 33/50 [02:53<01:43,  6.07s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:20,638 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 68%|██████▊   | 34/50 [03:01<01:45,  6.61s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:28,524 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 70%|███████   | 35/50 [03:06<01:32,  6.17s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:33,665 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 72%|███████▏  | 36/50 [03:12<01:27,  6.24s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:40,053 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 74%|███████▍  | 37/50 [03:16<01:12,  5.57s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:44,081 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 76%|███████▌  | 38/50 [03:23<01:09,  5.80s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:50,419 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 78%|███████▊  | 39/50 [03:28<01:01,  5.63s/it][INFO|configuration_utils.py:577] 2024-04-05 05:37:55,641 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 80%|████████  | 40/50 [03:32<00:53,  5.35s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:00,350 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 82%|████████▏ | 41/50 [03:39<00:50,  5.65s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:06,685 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 84%|████████▍ | 42/50 [03:46<00:47,  5.97s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:13,405 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 86%|████████▌ | 43/50 [03:52<00:43,  6.27s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:20,383 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 88%|████████▊ | 44/50 [03:59<00:37,  6.24s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:26,546 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 90%|█████████ | 45/50 [04:04<00:29,  5.83s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:31,427 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 92%|█████████▏| 46/50 [04:08<00:22,  5.55s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:36,306 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 94%|█████████▍| 47/50 [04:14<00:16,  5.53s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:41,786 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 96%|█████████▌| 48/50 [04:20<00:11,  5.64s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:47,696 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+ 98%|█████████▊| 49/50 [04:25<00:05,  5.59s/it][INFO|configuration_utils.py:577] 2024-04-05 05:38:53,175 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "eos_token_id": 2,
+  "pad_token_id": 0,
+  "transformers_version": "4.30.2"
+}
+
+100%|██████████| 50/50 [04:29<00:00,  5.12s/it]Building prefix dict from the default dictionary ...
+04/05/2024 05:38:57 - DEBUG - jieba - Building prefix dict from the default dictionary ...
+Dumping model to file cache /tmp/jieba.cache
+04/05/2024 05:38:58 - DEBUG - jieba - Dumping model to file cache /tmp/jieba.cache
+Loading model cost 0.729 seconds.
+04/05/2024 05:38:58 - DEBUG - jieba - Loading model cost 0.729 seconds.
+Prefix dict has been built successfully.
+04/05/2024 05:38:58 - DEBUG - jieba - Prefix dict has been built successfully.
+100%|██████████| 50/50 [04:30<00:00,  5.42s/it]
+***** predict metrics *****
+  predict_bleu-4             =     5.7076
+  predict_rouge-1            =    27.4445
+  predict_rouge-2            =     5.0961
+  predict_rouge-l            =    22.9567
+  predict_runtime            = 0:04:38.09
+  predict_samples            =         50
+  predict_samples_per_second =       0.18
+  predict_steps_per_second   =       0.18

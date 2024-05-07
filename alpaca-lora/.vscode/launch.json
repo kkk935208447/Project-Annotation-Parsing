@@ -1,0 +1,24 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python 调试LORA",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/opt/conda/bin/python",  // which python 查看位置
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode项目根路径,搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [
+                "finetune.py",
+                "--base_model","/workspace/Llama-2-7b-chat-hf", // TODO 修改官方线上数据集为自己的路径
+                "--output_dir","~/lora-alpaca"
+            ]
+        }
+    ]
+}

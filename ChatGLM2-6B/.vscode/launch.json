@@ -1,0 +1,190 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        // ptuning 微调
+        {
+            "name": "Python 调试 ptuning v2微调",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "ptuning/main.py",  // .py脚本文件相对路径位置
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode项目根路径,搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [
+                "--do_train",
+                "--do_eval",
+                "--train_file",
+                "/workspace/AdvertiseGen/train.json",
+                "--validation_file",
+                "/workspace/AdvertiseGen/dev.json",
+                "--preprocessing_num_workers",
+                "10",
+                "--prompt_column",
+                "content",
+                "--response_column",
+                "summary",
+                "--overwrite_cache",
+                "--model_name_or_path",
+                "/workspace/chatglm2-6b",
+                "--output_dir",
+                "/workspace/output/adgen-chatglm2-6b-pt-128-2e-2", // 注意：这里直接用替换的方式使用了环境变量的值
+                "--overwrite_output_dir",
+                "--max_source_length",
+                "64",
+                "--max_target_length",
+                "128",
+                "--per_device_train_batch_size",
+                "1",
+                "--per_device_eval_batch_size",
+                "1",
+                "--gradient_accumulation_steps",
+                "2",
+                "--predict_with_generate",
+                "--max_steps",
+                "30",
+                "--logging_steps",
+                "10",
+                "--max_train_samples","200",
+                "--max_eval_samples","50",
+                "--save_steps",
+                "20",
+                "--learning_rate",
+                "2e-2", // 同上，直接使用值
+                "--pre_seq_len",
+                "128", // 同上，直接使用值
+                "--quantization_bit",
+                "4"
+            ]
+        },
+        // full fine-tuning
+        {
+            "name": "Python full fine-tuning 微调",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/opt/conda/envs/llm/bin/deepspeed",  // deepspeed 路径位置
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode项目根路径,搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [
+                "--num_gpus","1",
+                "ptuning/main.py",
+                "--deepspeed",
+                "ptuning/deepspeed_stage3.json",
+                "--do_train",
+                "--do_eval",
+                "--train_file",
+                "/workspace/AdvertiseGen/train.json",
+                "--validation_file",
+                "/workspace/AdvertiseGen/dev.json",
+                "--preprocessing_num_workers",
+                "10",
+                "--prompt_column",
+                "content",
+                "--response_column",
+                "summary",
+                "--overwrite_cache",
+                "--model_name_or_path",
+                "/workspace/chatglm2-6b",
+                "--output_dir",
+                "/workspace/output/adgen-chatglm2-6b-ft-1e-4",
+                "--overwrite_output_dir",
+                "--max_source_length",
+                "64",
+                "--max_target_length",
+                "128",
+                "--per_device_train_batch_size",
+                "1",
+                "--per_device_eval_batch_size",
+                "1",
+                "--gradient_accumulation_steps",
+                "2",
+                "--predict_with_generate",
+                "--max_steps",
+                "30",
+                "--max_train_samples",
+                "200",
+                "--max_eval_samples",
+                "20",
+                "--logging_steps",
+                "10",
+                "--save_steps",
+                "20",
+                "--learning_rate",
+                "1e-4",
+                "--fp16"
+            ]
+        },
+        // evaluate ptuning
+        {
+            "name": "Python evaluate ptuning",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "ptuning/main.py",  // 路径位置
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode项目根路径,搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [
+                "--do_predict",
+                "--validation_file",
+                "/workspace/AdvertiseGen/dev.json",
+                "--test_file",
+                "/workspace/AdvertiseGen/dev.json",
+                "--overwrite_cache",
+                "--prompt_column",
+                "content",
+                "--response_column",
+                "summary",
+                "--model_name_or_path",
+                "/workspace/chatglm2-6b",
+                "--ptuning_checkpoint",
+                "/workspace/output/adgen-chatglm2-6b-pt-128-1e-3/checkpoint-1200",
+                "--output_dir",
+                "/workspace/output/adgen-chatglm2-6b-pt-128-1e-3",
+                "--overwrite_output_dir",
+                "--max_source_length",
+                "64",
+                "--max_target_length",
+                "128",
+                "--per_device_eval_batch_size",
+                "1",
+                "--predict_with_generate",
+                "--pre_seq_len",
+                "128",
+                "--quantization_bit",
+                "4",
+                "--max_predict_samples",
+                "10"
+            ]
+        },
+        // ptuning 后 web_demo 部署
+        {
+            "name": "ptuning 后 web_demo 部署",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "ptuning/web_demo.py",  // 路径位置
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}", // 设置vscode项目根路径,搜索包时优先从该目录进行,防止发生import包错误
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "args": [
+                "--model_name_or_path",
+                "/workspace/chatglm2-6b",
+                "--ptuning_checkpoint",
+                "/workspace/output/adgen-chatglm2-6b-pt-128-1e-3/checkpoint-1200",
+                "--pre_seq_len",
+                "128"
+            ]
+        }
+    ]
+}

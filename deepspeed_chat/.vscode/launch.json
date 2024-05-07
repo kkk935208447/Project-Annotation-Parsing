@@ -1,0 +1,168 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python 调试一阶段LORA",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/opt/conda/envs/dsc/bin/deepspeed",  // which deepspeed 查看位置
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode项目根路径,搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [
+                "--num_gpus", "1", 
+                "training/step1_supervised_finetuning/main.py",
+                "--data_path","Dahoas/rm-static",// TODO 修改官方线上数据集为自己的路径
+                "--model_name_or_path","facebook/opt-350m",
+                "--per_device_train_batch_size", "4",
+                "--per_device_eval_batch_size", "4",
+                "--max_seq_len", "512",
+                "--learning_rate", "1e-5",
+                "--weight_decay", "0.",
+                "--num_train_epochs", "2",
+                "--gradient_accumulation_steps", "24",
+                "--lr_scheduler_type", "cosine",
+                "--num_warmup_steps", "0",
+                "--seed", "42",
+                "--add_eot_token",
+                //"--gradient_checkpointing",
+                //"--offload",
+                "--zero_stage", "3",
+                "--lora_dim", "64",
+                "--lora_module_name", "decoder.layers.",
+                "--deepspeed",
+                "--only_optimize_lora",
+                "--lora_learning_rate", "5e-4",
+                "--compute_fp32_loss",
+                "--enable_tensorboard",
+                "--tensorboard_path","/root/checkpoint/dsc",
+                "--output_dir", "/root/checkpoint/dsc"
+            ]
+        },
+        {
+            "name": "Python 调试一阶段FULL",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/opt/conda/envs/dsc/bin/deepspeed",  // which deepspeed 查看位置
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode项目根路径,搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [
+                "--num_gpus", "1", 
+                "training/step1_supervised_finetuning/main.py",
+                "--data_path","Dahoas/rm-static",// TODO 修改官方线上数据集为自己的路径
+                "--model_name_or_path","facebook/opt-350m",
+                "--per_device_train_batch_size", "8",
+                "--per_device_eval_batch_size", "8",
+                "--max_seq_len", "512",
+                "--learning_rate", "9.65e-6",
+                "--weight_decay", "0.",
+                "--num_train_epochs", "2",
+                "--gradient_accumulation_steps", "8",
+                "--lr_scheduler_type", "cosine",
+                "--num_warmup_steps", "0",
+                "--seed", "42",
+                "--add_eot_token",
+                //"--gradient_checkpointing",
+                //"--offload",
+                "--zero_stage", "3",
+                "--deepspeed",
+                "--compute_fp32_loss",
+                "--enable_tensorboard",
+                "--tensorboard_path","/root/checkpoint/dsc",
+                "--output_dir", "/root/checkpoint/dsc"
+            ]
+        },
+        {
+            "name": "Python 调试二阶段FULL",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/root/miniconda3/envs/dsc/bin/deepspeed",  // which deepspeed 查看位置
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode项目根路径,搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [
+                "--num_gpus", "1", 
+                "training/step2_reward_model_finetuning/main.py",
+                "--data_path", "/root/DSC/datas",
+                "--data_split", "2,4,4",
+                "--model_name_or_path", "/root/sim_chatgpt/opt-125m",
+                "--num_padding_at_beginning", "1",
+                "--per_device_train_batch_size", "4",
+                "--per_device_eval_batch_size", "4",
+                "--max_seq_len", "512",
+                "--learning_rate", "5e-5",
+                "--weight_decay", "0.1",
+                "--num_train_epochs", "1",
+                "--gradient_accumulation_steps", "2",
+                "--lr_scheduler_type", "cosine",
+                "--num_warmup_steps", "0",
+                "--seed", "42",
+                "--add_eot_token",
+                "--dropout", "0.1",
+                "--zero_stage", "3",
+                "--gradient_checkpointing",
+                "--offload",
+                "--compute_fp32_loss",
+                "--deepspeed",
+                "--enable_tensorboard",
+                "--tensorboard_path", "/root/autodl-tmp/DSC_out/step2/full",
+                "--output_dir", "/root/autodl-tmp/DSC_out/step2/full"
+            ]
+        },
+        {
+            "name": "Python 调试三阶段阶段LoRA",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/root/miniconda3/envs/dsc/bin/deepspeed",  // which deepspeed 查看位置
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceRoot}" // 设置vscode项目根路径,搜索包时优先从该目录进行,防止发生import包错误
+            },
+            "args": [
+                "--num_gpus", "1", 
+                "training/step3_rlhf_finetuning/main.py",
+                "--data_path", "/root/DSC/datas",
+                "--data_split", "2,4,4",
+                "--actor_model_name_or_path", "/root/sim_chatgpt/opt-350m",
+                "--critic_model_name_or_path", "/root/sim_chatgpt/opt-125m",
+                "--num_padding_at_beginning", "1",
+                "--per_device_generation_batch_size", "6",
+                "--per_device_training_batch_size", "6",
+                "--generation_batches", "1",
+                "--ppo_epochs", "1",
+                "--max_answer_seq_len", "256",
+                "--max_prompt_seq_len", "256",
+                "--actor_learning_rate", "5e-4",
+                "--critic_learning_rate", "5e-6",
+                "--num_train_epochs", "1",
+                "--lr_scheduler_type", "cosine",
+                "--gradient_accumulation_steps", "1",
+                "--num_warmup_steps", "100",
+                "--seed", "42",
+                "--deepspeed",
+                "--offload_reference_model",
+                "--inference_tp_size", "1",
+                "--add_eot_token",
+                // "--enable_hybrid_engine",
+                "--actor_zero_stage", "3",
+                "--critic_zero_stage", "3",
+                "--actor_gradient_checkpointing",
+                "--actor_dropout", "0.0",
+                "--actor_lora_dim", "128",
+                "--actor_lora_module_name", "decoder.layers.",
+                "--output_dir", "/root/ckeckpoint/dsc_step3/lora"
+            ]
+        }
+    ]
+}
